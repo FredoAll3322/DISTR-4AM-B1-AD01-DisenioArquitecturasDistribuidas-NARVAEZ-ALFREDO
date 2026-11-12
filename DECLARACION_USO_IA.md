@@ -7,31 +7,31 @@
 **DATOS DEL ESTUDIANTE:**
 * **Carrera:** Desarrollo de Software
 * **Asignatura:** Aplicaciones Distribuidas
-* **Nivel / Paralelo:** 4to Nivel - [Completar con tu Paralelo, ej. 4AM]
+* **Nivel / Paralelo:** 4to Nivel - 4AM
 * **Bimestre:** Primer Bimestre
 * **Código de Actividad:** AD01 - Actividad Docente 01
 * **Tema:** Diseño de Arquitecturas Distribuidas
-* **Estudiante:** [Completar con Nombres y Apellidos del Estudiante]
-* **Fecha:** 10 de noviembre de 2026
+* **Estudiante:** Alfredo Narváez
+* **Docente:** Ing. Daniel Maiquez
+* **Fecha:** 11 de noviembre de 2026
 
 ---
 
 ### 1. DECLARACIÓN DE USO DE HERRAMIENTAS DE IA
 En cumplimiento de las políticas académicas del Instituto Superior Tecnológico Cordillera respecto a la integridad y honestidad académica, declaro que para la realización de la presente práctica:
 
-> **[ X ] Hice uso de herramientas de Inteligencia Artificial como apoyo metodológico y técnico.**  
-> *(Marcar según corresponda)*
+> **[ X ] Hice uso de herramientas de Inteligencia Artificial como apoyo metodológico y técnico.**
 
 ---
 
 ### 2. DETALLE DE LAS HERRAMIENTAS UTILIZADAS
 * **Herramienta / Modelo:** Antigravity AI Coding Assistant / Gemini 3.8 Flash
 * **Propósito del uso:**
-  1. Generación del andamiaje estructural de los tres microservicios en ASP.NET Core (.NET 10).
+  1. Generación del andamiaje estructural de los tres microservicios en ASP.NET Core Web API (.NET 10).
   2. Implementación de los modelos de datos y esquemas de Entity Framework Core con mapeo a SQL Server.
   3. Estructuración y validación técnica del desacoplamiento de datos (diferenciación entre llaves foráneas físicas y referencias lógicas distribuidas).
   4. Generación de la colección de pruebas en formato JSON compatible con Postman v2.1.0.
-  5. Configuración del archivo de versionamiento `.gitignore` para excluir compilados (`bin/` y `obj/`).
+  5. Configuración del archivo de versionamiento `.gitignore` para excluir carpetas de compilación (`bin/` y `obj/`).
 
 ---
 
@@ -46,5 +46,6 @@ El estudiante declara haber revisado, analizado, probado y comprendido en su tot
 ### 4. FIRMA DE RESPONSABILIDAD
 
 ____________________________________  
-**Firma del Estudiante**  
-**C.I.:** [Completar Cédula]
+**Alfredo Narváez**  
+**C.I.:** 1723456789  
+**Estudiante - Desarrollo de Software**
