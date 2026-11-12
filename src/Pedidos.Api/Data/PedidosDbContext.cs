@@ -40,10 +40,10 @@ public class PedidosDbContext : DbContext
             .HasForeignKey(d => d.IdPedido)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Seed data
+        // Seed data inicial
         modelBuilder.Entity<Cliente>().HasData(
-            new Cliente { IdCliente = 1, Nombres = "Juan Carlos Pérez", Cedula = "1712345678", Correo = "juan.perez@cordillera.edu.ec" },
-            new Cliente { IdCliente = 2, Nombres = "María Elena Gómez", Cedula = "0923456781", Correo = "maria.gomez@empresa.com" }
+            new Cliente { IdCliente = 1, Nombres = "Alfredo Narváez", Cedula = "1723456789", Correo = "alfrednrvz9@gmail.com" },
+            new Cliente { IdCliente = 2, Nombres = "María Elena Gómez", Cedula = "0923456781", Correo = "maria.gomez@gmail.com" }
         );
 
         modelBuilder.Entity<Pedido>().HasData(

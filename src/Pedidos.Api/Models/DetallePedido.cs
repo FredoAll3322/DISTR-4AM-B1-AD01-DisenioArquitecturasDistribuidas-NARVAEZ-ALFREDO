@@ -11,17 +11,12 @@ public class DetallePedido
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdDetalle { get; set; }
 
-    /// <summary>
-    /// LLAVE FORÁNEA FÍSICA: Referencia interna a la tabla Pedidos dentro de PedidosDB.
-    /// </summary>
+    // Llave foranea fisica al pedido
     [Required]
     public int IdPedido { get; set; }
 
-    /// <summary>
-    /// LLAVE FORÁNEA LÓGICA: Referencia al IdProducto de Catalogo.Api (CatalogoDB).
-    /// En microservicios no existe restricción de integridad referencial a nivel de base de datos SQL.
-    /// </summary>
-    [Required(ErrorMessage = "El IdProducto (referencia lógica a Catalogo) es obligatorio.")]
+    // Llave foranea logica: referencia al producto de Catalogo.Api
+    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
     public int IdProducto { get; set; }
 
     [Required(ErrorMessage = "La cantidad es obligatoria.")]
