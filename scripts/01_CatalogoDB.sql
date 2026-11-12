@@ -1,7 +1,7 @@
 -- ==========================================================
 -- SCRIPT DE BASE DE DATOS: CatalogoDB
--- MICROSERVICIO: Catalogo.Api
--- RESPONSABILIDAD: Administrar la información comercial de los productos
+-- Estudiante: Alfredo Narváez
+-- Asignatura: Aplicaciones Distribuidas - AD01
 -- ==========================================================
 
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'CatalogoDB')

@@ -1,7 +1,7 @@
 -- ==========================================================
 -- SCRIPT DE BASE DE DATOS: InventarioDB
--- MICROSERVICIO: Inventario.Api
--- RESPONSABILIDAD: Gestionar el almacenamiento y los movimientos físicos de mercancías
+-- Estudiante: Alfredo Narváez
+-- Asignatura: Aplicaciones Distribuidas - AD01
 -- ==========================================================
 
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'InventarioDB')

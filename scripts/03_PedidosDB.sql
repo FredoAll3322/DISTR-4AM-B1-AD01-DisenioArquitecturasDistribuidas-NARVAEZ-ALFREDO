@@ -1,7 +1,7 @@
 -- ==========================================================
 -- SCRIPT DE BASE DE DATOS: PedidosDB
--- MICROSERVICIO: Pedidos.Api
--- RESPONSABILIDAD: Registrar y administrar las órdenes de compra de los clientes
+-- Estudiante: Alfredo Narváez
+-- Asignatura: Aplicaciones Distribuidas - AD01
 -- ==========================================================
 
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'PedidosDB')
@@ -25,7 +25,7 @@ BEGIN
 END
 GO
 
--- 2. Tabla Pedidos (Con FK física interna a Clientes)
+-- 2. Tabla Pedidos (FK física interna a Clientes)
 IF OBJECT_ID('dbo.Pedidos', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.Pedidos (
@@ -33,22 +33,21 @@ BEGIN
         IdCliente INT NOT NULL,
         Fecha DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
         Total DECIMAL(18,2) NOT NULL,
-        Estado NVARCHAR(50) NOT NULL DEFAULT 'Pendiente', -- 'Pendiente', 'Procesado', 'Completado', 'Cancelado'
+        Estado NVARCHAR(50) NOT NULL DEFAULT 'Pendiente',
         CONSTRAINT FK_Pedidos_Clientes FOREIGN KEY (IdCliente) REFERENCES dbo.Clientes(IdCliente)
     );
 END
 GO
 
 -- 3. Tabla DetallePedido
--- REGLAS DE INTEGRIDAD:
--- * IdPedido: Clave Foránea FÍSICA referenciando dbo.Pedidos dentro de PedidosDB.
--- * IdProducto: Clave Foránea LÓGICA referenciando a Catalogo.Api (CatalogoDB).
+-- IdPedido: FK física hacia Pedidos
+-- IdProducto: FK lógica hacia el microservicio Catalogo
 IF OBJECT_ID('dbo.DetallesPedido', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.DetallesPedido (
         IdDetalle INT IDENTITY(1,1) PRIMARY KEY,
         IdPedido INT NOT NULL,
-        IdProducto INT NOT NULL, -- FK Lógica a CatalogoDB.dbo.Productos
+        IdProducto INT NOT NULL, -- Referencia logica a CatalogoDB.dbo.Productos
         Cantidad INT NOT NULL,
         PrecioUnitario DECIMAL(18,2) NOT NULL,
         CONSTRAINT FK_DetallesPedido_Pedidos FOREIGN KEY (IdPedido) REFERENCES dbo.Pedidos(IdPedido) ON DELETE CASCADE
@@ -56,13 +55,13 @@ BEGIN
 END
 GO
 
--- Datos Semilla (Seed Data)
+-- Datos semilla
 IF NOT EXISTS (SELECT 1 FROM dbo.Clientes WHERE IdCliente = 1)
 BEGIN
     SET IDENTITY_INSERT dbo.Clientes ON;
     INSERT INTO dbo.Clientes (IdCliente, Nombres, Cedula, Correo) VALUES
-    (1, 'Juan Carlos Pérez', '1712345678', 'juan.perez@cordillera.edu.ec'),
-    (2, 'María Elena Gómez', '0923456781', 'maria.gomez@empresa.com');
+    (1, 'Alfredo Narváez', '1723456789', 'alfrednrvz9@gmail.com'),
+    (2, 'María Elena Gómez', '0923456781', 'maria.gomez@gmail.com');
     SET IDENTITY_INSERT dbo.Clientes OFF;
 END
 GO
