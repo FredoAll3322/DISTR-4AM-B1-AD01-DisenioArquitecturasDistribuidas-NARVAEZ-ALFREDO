@@ -10,16 +10,11 @@ public class Existencia
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdExistencia { get; set; }
 
-    /// <summary>
-    /// LLAVE FORÁNEA LÓGICA: Referencia al IdProducto de Catalogo.Api (CatalogoDB).
-    /// No tiene restricción física (FOREIGN KEY constraint) en la base de datos SQL para mantener el desacoplamiento de microservicios.
-    /// </summary>
-    [Required(ErrorMessage = "El IdProducto (referencia lógica a Catalogo) es obligatorio.")]
+    // Referencia logica a Catalogo.Api (sin constraint en base de datos)
+    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
     public int IdProducto { get; set; }
 
-    /// <summary>
-    /// LLAVE FORÁNEA FÍSICA: Referencia interna a la tabla Bodegas dentro de InventarioDB.
-    /// </summary>
+    // Relacion fisica con la tabla Bodegas
     [Required(ErrorMessage = "El IdBodega es obligatorio.")]
     public int IdBodega { get; set; }
 

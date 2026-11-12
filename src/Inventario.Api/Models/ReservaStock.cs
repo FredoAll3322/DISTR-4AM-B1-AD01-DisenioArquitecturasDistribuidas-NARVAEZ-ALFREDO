@@ -10,15 +10,11 @@ public class ReservaStock
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdReserva { get; set; }
 
-    /// <summary>
-    /// LLAVE FORÁNEA LÓGICA: Referencia al IdProducto de Catalogo.Api.
-    /// </summary>
-    [Required(ErrorMessage = "El IdProducto (referencia lógica a Catalogo) es obligatorio.")]
+    // Referencia logica a Catalogo.Api
+    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
     public int IdProducto { get; set; }
 
-    /// <summary>
-    /// LLAVE FORÁNEA FÍSICA: Referencia interna a Bodegas en InventarioDB.
-    /// </summary>
+    // Relacion fisica con Bodegas
     [Required(ErrorMessage = "El IdBodega es obligatorio.")]
     public int IdBodega { get; set; }
 
