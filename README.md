@@ -5,7 +5,7 @@
 * **Tema:** Diseño de Arquitecturas Distribuidas - Microservicios independientes para comercio y distribución multibodega
 * **Estudiante:** Alfredo Narváez
 * **Nivel / Paralelo:** 4to Nivel - 4AM
-* **Docente:** Ing. Daniel Maiquez
+* **Docente:** Ing. Diego Maiquez
 * **Bimestre:** Primer Bimestre
 * **Repositorio:** [https://github.com/FredoAll3322/DISTR-4AM-B1-AD01-DisenioArquitecturasDistribuidas-NARVAEZ-ALFREDO](https://github.com/FredoAll3322/DISTR-4AM-B1-AD01-DisenioArquitecturasDistribuidas-NARVAEZ-ALFREDO)
 
