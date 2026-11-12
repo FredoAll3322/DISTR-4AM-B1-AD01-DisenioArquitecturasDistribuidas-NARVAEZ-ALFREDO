@@ -1,8 +1,4 @@
--- ==========================================================
--- SCRIPT DE BASE DE DATOS: PedidosDB
--- Estudiante: Alfredo Narváez
--- Asignatura: Aplicaciones Distribuidas - AD01
--- ==========================================================
+
 
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'PedidosDB')
 BEGIN

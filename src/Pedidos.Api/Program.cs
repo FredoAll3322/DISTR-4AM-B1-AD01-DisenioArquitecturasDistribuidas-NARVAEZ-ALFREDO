@@ -27,6 +27,12 @@ var connectionString = builder.Configuration.GetConnectionString("PedidosDbConne
 builder.Services.AddDbContext<PedidosDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddHttpClient<Pedidos.Api.Services.CatalogoApiClient>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["CatalogoApi:BaseUrl"] ?? "http://localhost:5001/");
+    client.Timeout = TimeSpan.FromSeconds(5);
+});
+
 // CORS
 builder.Services.AddCors(options =>
 {

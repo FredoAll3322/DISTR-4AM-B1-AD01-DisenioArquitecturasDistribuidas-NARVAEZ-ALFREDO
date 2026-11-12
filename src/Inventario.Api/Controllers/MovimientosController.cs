@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Inventario.Api.Data;
 using Inventario.Api.Models;
 using Inventario.Api.DTOs;
+using Inventario.Api.Services;
 
 namespace Inventario.Api.Controllers;
 
@@ -11,10 +12,12 @@ namespace Inventario.Api.Controllers;
 public class MovimientosController : ControllerBase
 {
     private readonly InventarioDbContext _context;
+    private readonly CatalogoApiClient _catalogoApiClient;
 
-    public MovimientosController(InventarioDbContext context)
+    public MovimientosController(InventarioDbContext context, CatalogoApiClient catalogoApiClient)
     {
         _context = context;
+        _catalogoApiClient = catalogoApiClient;
     }
 
     [HttpGet]
@@ -77,11 +80,17 @@ public class MovimientosController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<MovimientoInventario>> Create([FromBody] MovimientoCreateDto dto)
+    public async Task<IActionResult> Create([FromBody] MovimientoCreateDto dto)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
+        }
+
+        var validacionProducto = await ValidarProductoAsync(dto.IdProducto);
+        if (validacionProducto != null)
+        {
+            return validacionProducto;
         }
 
         var tipo = dto.Tipo.Trim();
@@ -158,5 +167,17 @@ public class MovimientosController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetById), new { id = movimiento.IdMovimiento }, movimiento);
+    }
+
+    private async Task<IActionResult?> ValidarProductoAsync(int idProducto)
+    {
+        var estadoProducto = await _catalogoApiClient.ConsultarProductoAsync(idProducto, HttpContext.RequestAborted);
+        return estadoProducto switch
+        {
+            EstadoProductoCatalogo.NoExiste => BadRequest(new { mensaje = $"El producto con ID {idProducto} no existe en Catalogo.Api." }),
+            EstadoProductoCatalogo.NoDisponible => StatusCode(StatusCodes.Status503ServiceUnavailable,
+                new { mensaje = "No se pudo validar el producto porque Catalogo.Api no está disponible." }),
+            _ => null
+        };
     }
 }

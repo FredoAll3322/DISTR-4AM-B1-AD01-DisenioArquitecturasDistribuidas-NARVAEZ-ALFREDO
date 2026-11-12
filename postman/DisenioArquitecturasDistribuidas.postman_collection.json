@@ -824,7 +824,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"nombres\": \"Otro Cliente\",\n  \"cedula\": \"1712345678\",\n  \"correo\": \"otro@correo.com\"\n}"
+                  "raw": "{\n  \"nombres\": \"Otro Cliente\",\n  \"cedula\": \"1754896321\",\n  \"correo\": \"otro@correo.com\"\n}"
                 },
                 "url": {
                   "raw": "{{pedidos_url}}/api/clientes",

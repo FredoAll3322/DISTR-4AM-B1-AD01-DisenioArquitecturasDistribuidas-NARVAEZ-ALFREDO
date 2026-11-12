@@ -19,10 +19,10 @@ public class BodegaCreateUpdateDto
 
 public class ExistenciaCreateUpdateDto
 {
-    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdProducto debe ser mayor a 0.")]
     public int IdProducto { get; set; }
 
-    [Required(ErrorMessage = "El IdBodega es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdBodega debe ser mayor a 0.")]
     public int IdBodega { get; set; }
 
     [Required(ErrorMessage = "El stock es obligatorio.")]
@@ -32,10 +32,10 @@ public class ExistenciaCreateUpdateDto
 
 public class MovimientoCreateDto
 {
-    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdProducto debe ser mayor a 0.")]
     public int IdProducto { get; set; }
 
-    [Required(ErrorMessage = "El IdBodega es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdBodega debe ser mayor a 0.")]
     public int IdBodega { get; set; }
 
     [Required(ErrorMessage = "El tipo de movimiento es obligatorio (Entrada, Salida, Ajuste).")]
@@ -48,10 +48,10 @@ public class MovimientoCreateDto
 
 public class ReservaCreateDto
 {
-    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdProducto debe ser mayor a 0.")]
     public int IdProducto { get; set; }
 
-    [Required(ErrorMessage = "El IdBodega es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdBodega debe ser mayor a 0.")]
     public int IdBodega { get; set; }
 
     [Required(ErrorMessage = "La cantidad es obligatoria.")]

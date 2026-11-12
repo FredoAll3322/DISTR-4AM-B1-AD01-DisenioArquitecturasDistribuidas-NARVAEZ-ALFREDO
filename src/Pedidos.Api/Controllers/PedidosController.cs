@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Pedidos.Api.Data;
 using Pedidos.Api.Models;
 using Pedidos.Api.DTOs;
+using Pedidos.Api.Services;
 
 namespace Pedidos.Api.Controllers;
 
@@ -11,10 +12,12 @@ namespace Pedidos.Api.Controllers;
 public class PedidosController : ControllerBase
 {
     private readonly PedidosDbContext _context;
+    private readonly CatalogoApiClient _catalogoApiClient;
 
-    public PedidosController(PedidosDbContext context)
+    public PedidosController(PedidosDbContext context, CatalogoApiClient catalogoApiClient)
     {
         _context = context;
+        _catalogoApiClient = catalogoApiClient;
     }
 
     [HttpGet]
@@ -116,6 +119,21 @@ public class PedidosController : ControllerBase
         if (dto.Detalles == null || dto.Detalles.Count == 0)
         {
             return BadRequest(new { mensaje = "El pedido debe contener al menos un producto." });
+        }
+
+        foreach (var idProducto in dto.Detalles.Select(d => d.IdProducto).Distinct())
+        {
+            var estadoProducto = await _catalogoApiClient.ConsultarProductoAsync(idProducto, HttpContext.RequestAborted);
+            if (estadoProducto == EstadoProductoCatalogo.NoExiste)
+            {
+                return BadRequest(new { mensaje = $"El producto con ID {idProducto} no existe en Catalogo.Api." });
+            }
+
+            if (estadoProducto == EstadoProductoCatalogo.NoDisponible)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    new { mensaje = "No se pudo validar el producto porque Catalogo.Api no está disponible." });
+            }
         }
 
         var pedido = new Pedido

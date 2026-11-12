@@ -20,7 +20,7 @@ public class ClienteCreateUpdateDto
 
 public class DetallePedidoItemDto
 {
-    [Required(ErrorMessage = "El IdProducto es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdProducto debe ser mayor a 0.")]
     public int IdProducto { get; set; }
 
     [Required(ErrorMessage = "La cantidad es obligatoria.")]
@@ -34,7 +34,7 @@ public class DetallePedidoItemDto
 
 public class PedidoCreateDto
 {
-    [Required(ErrorMessage = "El IdCliente es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El IdCliente debe ser mayor a 0.")]
     public int IdCliente { get; set; }
 
     [Required(ErrorMessage = "El pedido debe contener al menos un detalle de producto.")]

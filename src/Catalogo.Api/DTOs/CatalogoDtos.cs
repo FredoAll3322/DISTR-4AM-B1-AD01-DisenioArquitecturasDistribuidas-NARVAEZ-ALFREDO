@@ -25,10 +25,10 @@ public class MarcaCreateUpdateDto
 
 public class ProductoCreateUpdateDto
 {
-    [Required(ErrorMessage = "El Id de categoría es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El Id de categoría debe ser mayor a 0.")]
     public int IdCategoria { get; set; }
 
-    [Required(ErrorMessage = "El Id de marca es obligatorio.")]
+    [Range(1, int.MaxValue, ErrorMessage = "El Id de marca debe ser mayor a 0.")]
     public int IdMarca { get; set; }
 
     [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
