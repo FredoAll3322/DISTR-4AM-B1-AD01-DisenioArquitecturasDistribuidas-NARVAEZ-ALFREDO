@@ -79,7 +79,8 @@ BEGIN
     INSERT INTO dbo.Bodegas (IdBodega, Nombre, Ciudad, Direccion) VALUES
     (1, 'Bodega Principal Norte', 'Quito', 'Av. Galo Plaza Lasso N45-12'),
     (2, 'Bodega Sucursal Sur', 'Guayaquil', 'Av. de las Américas 1024'),
-    (3, 'Bodega Centro de Distribución', 'Cuenca', 'Parque Industrial Calle C');
+    (3, 'Bodega Centro de Distribución', 'Cuenca', 'Parque Industrial Calle C'),
+    (4, 'Bodega Cordillera', 'Quito', 'Campus Occidental - Av. Manuel Córdova Galarza');
     SET IDENTITY_INSERT dbo.Bodegas OFF;
 END
 GO
@@ -93,7 +94,8 @@ BEGIN
     (3, 2, 1, 18),
     (4, 3, 1, 40),
     (5, 3, 2, 25),
-    (6, 4, 3, 100);
+    (6, 4, 3, 100),
+    (7, 1, 4, 50);
     SET IDENTITY_INSERT dbo.Existencias OFF;
 END
 GO
